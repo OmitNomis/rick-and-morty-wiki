@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
+import { ScreenContainer } from "@/components/ui";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} flex flex-col min-h-screen dark:bg-gray-900 bg-teal-50`}>
+      <body className={inter.className}>
         <AppProviders>
-          <Header />
-          <main>{children}</main>
+          <div className="flex flex-col items-center min-h-screen bg-teal-50 dark:bg-gray-900">
+            <Header />
+            <ScreenContainer>
+              <main>{children}</main>
+            </ScreenContainer>
+          </div>
         </AppProviders>
       </body>
     </html>
