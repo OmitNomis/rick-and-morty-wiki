@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { ScreenContainer } from "@/components/ui";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <ScreenContainer>
               <main>{children}</main>
             </ScreenContainer>
+            <Footer />
           </div>
         </AppProviders>
       </body>
