@@ -72,9 +72,8 @@ export const Header = () => {
             </SheetHeader>
             <div className="flex flex-col gap-5 items-center mt-5 w-full">
               {routes.map((route) => (
-                <SheetClose asChild>
+                <SheetClose asChild key={route.name}>
                   <Link
-                    key={route.name}
                     to={route.path}
                     className="font-bold
                     hover:text-gray-500 transition-colors duration-300">
