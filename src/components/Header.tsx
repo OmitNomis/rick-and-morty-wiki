@@ -31,7 +31,7 @@ export const Header = () => {
     <MaxWidthComponent
       as="header"
       className="flex justify-between items-center border-b-2">
-      <div className="  flex items-start flex-col">
+      <div className="flex items-start flex-col">
         <Link to="/characters">
           <img
             src="/logo.png"
@@ -57,7 +57,7 @@ export const Header = () => {
       </div>
       <div className="sm:hidden flex  justify-end items-center">
         <Sheet>
-          <SheetTrigger>
+          <SheetTrigger asChild>
             <Button size={"icon"} variant={"ghost"}>
               <HamburgerMenuIcon className="w-6 h-6" />
             </Button>
