@@ -18,10 +18,15 @@ export const CharacterList = () => {
   } = data;
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-      {characters.map((character: CharacterResults) => {
-        return <CharacterCard character={character} />;
-      })}
+    <section className="flex flex-col gap-5">
+      <div>
+        <h1 className="text-3xl sm:text-4xl font-extrabold">Characters</h1>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {characters.map((character: CharacterResults) => {
+          return <CharacterCard character={character} />;
+        })}
+      </div>
     </section>
   );
 };
