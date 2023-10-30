@@ -8,7 +8,8 @@ interface CharacterCardProps {
 
 export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
   console.log(character);
-  const { id, name, image, status, location, origin } = character;
+  const { id, name, image, status, location, origin, species, type } =
+    character;
 
   return (
     <div className="flex flex-col sm:flex-row rounded-lg bg-secondary" key={id}>
@@ -19,17 +20,17 @@ export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
           className="object-cover h-full w-full rounded-tl-lg rounded-tr-lg sm:rounded-tr-none sm:rounded-bl-lg"
         />
       </div>
-      <div className="flex flex-col my-5 mx-5 gap-5">
+      <div className="flex flex-col p-5 gap-5 w-full sm:w-[60%]">
         <div>
-          <div>{name}</div>
-          <CharacterStatusTag />
+          <div className="text-xl font-bold sm:text-2xl">{name}</div>
+          <CharacterStatusTag status={status} species={species} type={type} />
         </div>
         <div>
-          <div>Last known location</div>
+          <div className="text-gray-400">Last known location:</div>
           <div>{location.name}</div>
         </div>
         <div>
-          <div>Character Origin</div>
+          <div className="text-gray-400">Character Origin:</div>
           <div>{origin.name}</div>
         </div>
       </div>
