@@ -25,7 +25,9 @@ export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
       <div className="flex flex-col p-5 gap-5 w-full sm:w-[60%]">
         <div>
           <Link to={id}>
-            <div className="text-xl font-bold sm:text-2xl">{name}</div>
+            <div className="text-xl font-bold sm:text-2xl hover:text-primary">
+              {name}
+            </div>
           </Link>
           <CharacterStatusTag status={status} species={species} type={type} />
         </div>

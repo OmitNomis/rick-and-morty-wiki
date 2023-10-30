@@ -46,7 +46,7 @@ export const Header = () => {
             key={route.name}
             to={route.path}
             className="font-bold
-          hover:text-gray-500 transition-colors duration-300
+          hover:text-primary transition-colors duration-300
           ">
             {route.name}
           </Link>
@@ -76,7 +76,7 @@ export const Header = () => {
                   <Link
                     to={route.path}
                     className="font-bold
-                    hover:text-gray-500 transition-colors duration-300">
+                    hover:text-primary transition-colors duration-300">
                     {route.name}
                   </Link>
                 </SheetClose>
