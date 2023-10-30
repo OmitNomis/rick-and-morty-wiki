@@ -1,21 +1,31 @@
-import { useQuery } from "@apollo/client";
-import { GET_ALL_CHARACTERS } from "@/queries/characters";
 import { CharacterResults } from "@/screens/Characrers/Characters.types";
 import { Loader } from "./Loader";
 import { CharacterCard } from "./CharacterCard";
+import { useFetchCharacters } from "@/hooks/useFetchCharacters";
+import { useState } from "react";
+
+export const initialFilters = {
+  name: "",
+  status: "",
+  species: "",
+  gender: "",
+};
 
 export const CharacterList = () => {
-  const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
+  // const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filterOptions, setFilterOptions] = useState(initialFilters);
+  const { characters, loading, error } = useFetchCharacters(
+    currentPage,
+    filterOptions
+  );
 
   if (loading) {
     return <Loader />;
   }
   if (error) {
+    return <>Err</>;
   }
-
-  const {
-    characters: { results: characters },
-  } = data;
 
   return (
     <section className="flex flex-col gap-5">
@@ -24,7 +34,7 @@ export const CharacterList = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {characters.map((character: CharacterResults) => {
-          return <CharacterCard character={character} />;
+          return <CharacterCard key={character.id} character={character} />;
         })}
       </div>
     </section>
