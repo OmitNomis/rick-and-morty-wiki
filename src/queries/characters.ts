@@ -10,6 +10,8 @@ export const GET_ALL_CHARACTERS = gql`
         id
         name
         image
+        type
+        species
         location {
           id
           name
