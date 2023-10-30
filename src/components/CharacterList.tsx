@@ -1,31 +1,27 @@
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CHARACTERS } from "@/queries/characters";
+import { CharacterResults } from "@/screens/Characrers/Characters.types";
+import { Loader } from "./Loader";
+import { CharacterCard } from "./CharacterCard";
 
 export const CharacterList = () => {
   const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
+  }
+  if (error) {
   }
 
   const {
     characters: { results: characters },
   } = data;
 
-  console.log(characters);
-
   return (
-    <div>
-      {characters.map((character) => {
-        return (
-          <div key={character.id}>
-            <div>Last seen: {character.location.name}</div>
-            <div>Origin: {character.origin.name}</div>
-            <div>{character.name}</div>
-            <img src={character.image} alt={character.name} />
-          </div>
-        );
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
+      {characters.map((character: CharacterResults) => {
+        return <CharacterCard character={character} />;
       })}
-    </div>
+    </section>
   );
 };
