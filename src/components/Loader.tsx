@@ -16,12 +16,12 @@ export const Loader: FC = () => {
       return list[id];
     };
     return (
-      <MaxWidthComponent className="flex justify-center items-center">
+      <MaxWidthComponent className="flex flex-col justify-center items-center">
         <img
-          height="300"
           src={generateAnimation(animationsList, randomNumber)}
           alt="loader"
         />
+        <span className="font-bold">Loading ...</span>
       </MaxWidthComponent>
     );
   }, []);
