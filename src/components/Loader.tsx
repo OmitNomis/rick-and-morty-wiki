@@ -21,7 +21,6 @@ export const Loader: FC = () => {
           src={generateAnimation(animationsList, randomNumber)}
           alt="loader"
         />
-        <span className="font-bold">Loading ...</span>
       </MaxWidthComponent>
     );
   }, []);

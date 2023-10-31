@@ -4,9 +4,7 @@ export const GET_ALL_CHARACTERS = gql`
   query GetAllCharacters($page: Int!, $filter: FilterCharacter) {
     characters(page: $page, filter: $filter) {
       info {
-        pages
-        next
-        prev
+        count
       }
       results {
         id

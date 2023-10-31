@@ -22,7 +22,7 @@ export type CharacterResults = {
 
 export type Characters = {
   info: {
-    pages: number;
+    count: number;
   };
   results: CharacterResults;
 };

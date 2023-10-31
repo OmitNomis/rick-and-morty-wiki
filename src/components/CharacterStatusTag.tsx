@@ -24,10 +24,10 @@ export const CharacterStatusTag: FC<CharacterStatusTagProps> = ({
   };
   return (
     <div className="flex items-center gap-1">
-      <div>{getStatusIcon()}</div>
-      <p>
-        {status} - {species} {type !== "" && `(${type})`}
-      </p>
+      <div className="flex justify-start">{getStatusIcon()}</div>
+      <span>
+        <span>{status}</span>- {species} {type !== "" && `(${type})`}
+      </span>
     </div>
   );
 };

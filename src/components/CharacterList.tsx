@@ -3,6 +3,7 @@ import { Loader } from "./Loader";
 import { CharacterCard } from "./CharacterCard";
 import { useFetchCharacters } from "@/hooks/useFetchCharacters";
 import { useState } from "react";
+import { CustomPagination } from "./ui/CustomPagination";
 
 export const initialFilters = {
   name: "",
@@ -12,10 +13,9 @@ export const initialFilters = {
 };
 
 export const CharacterList = () => {
-  // const { data, loading, error } = useQuery(GET_ALL_CHARACTERS);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterOptions, setFilterOptions] = useState(initialFilters);
-  const { characters, loading, error } = useFetchCharacters(
+  const { characters, loading, error, totalItems } = useFetchCharacters(
     currentPage,
     filterOptions
   );
@@ -36,6 +36,14 @@ export const CharacterList = () => {
         {characters.map((character: CharacterResults) => {
           return <CharacterCard key={character.id} character={character} />;
         })}
+      </div>
+      <div>
+        <CustomPagination
+          currentPage={currentPage}
+          totalItems={totalItems}
+          showNextPrevButtons
+          handleChange={setCurrentPage}
+        />
       </div>
     </section>
   );
