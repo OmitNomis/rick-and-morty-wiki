@@ -1,8 +1,14 @@
 import { useFetchSingleCharacter } from "@/hooks/useFetchSingleCharacter";
-import React, { FC } from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Loader } from "@/components/Loader";
-import { capitalizeFirstLetter } from "@/lib/utils";
+import { CharacterDetails } from "@/components/CharacterDetails";
+
+export type CharacterDetailsMapItem = {
+  label: string;
+  value: string;
+  navigateTo?: string;
+};
 
 export const CharacterProfile: FC = () => {
   const { id } = useParams();
@@ -10,9 +16,11 @@ export const CharacterProfile: FC = () => {
   if (loading) {
     return <Loader />;
   }
+  if (error) {
+    return <>ERr</>;
+  }
   const {
     character: {
-      id: characterId,
       name,
       status,
       species,
@@ -25,68 +33,46 @@ export const CharacterProfile: FC = () => {
     },
   } = data ?? {};
 
-  const CharacterDetailsMap = [
+  const CharacterDetailsMap: CharacterDetailsMapItem[] = [
     {
-      label: "Name:",
+      label: "NAME:",
       value: name,
     },
     {
-      label: "Status:",
+      label: "STATUS:",
       value: status,
     },
     {
-      label: "Spcies:",
+      label: "SPECIES:",
       value: species,
     },
     {
-      label: "Type:",
+      label: "TYPE:",
       value: type,
     },
     {
-      label: "Gender:",
+      label: "GENDER:",
       value: gender,
     },
     {
-      label: "Origin Location:",
+      label: "ORIGIN LOCATION:",
       value: origin.name,
+      navigateTo: `/locations/${origin.id}`,
     },
     {
-      label: "Last seen at:",
+      label: "LAST SEEN LOCATION:",
       value: location.name,
+      navigateTo: `/locations/${location.id}`,
     },
   ];
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row ">
-        <div className="flex justify-center sm:justify-start">
-          <img
-            src={image}
-            alt={`${name} image`}
-            className="rounded-xl object-cover min-w-[300px]"
-          />
-        </div>
-        <div className="flex mt-10 flex-col gap-4  flex-grow justify-center sm:mt-0">
-          {CharacterDetailsMap.map((characterDetails) => {
-            return (
-              <React.Fragment
-                key={`${characterDetails.label}, ${characterDetails.value}`}>
-                {characterDetails.value !== "" && (
-                  <div className="flex px-5">
-                    <div className="flex-1 justify-start">
-                      {characterDetails.label}
-                    </div>
-                    <div className=" flex-1 text-end sm:text-start">
-                      {capitalizeFirstLetter(characterDetails.value)}
-                    </div>
-                  </div>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </div>
-      </div>
-      {/* episodes */}
+      <CharacterDetails
+        characterDetailsMap={CharacterDetailsMap}
+        image={image}
+      />
+
       <div></div>
     </div>
   );
