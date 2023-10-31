@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Loader } from "@/components/Loader";
 import { CharacterDetails } from "@/components/CharacterDetails";
+import { CharacterEpisodes } from "@/components/CharacterEpisodes";
 
 export type CharacterDetailsMapItem = {
   label: string;
@@ -72,8 +73,7 @@ export const CharacterProfile: FC = () => {
         characterDetailsMap={CharacterDetailsMap}
         image={image}
       />
-
-      <div></div>
+      <CharacterEpisodes episodes={episode} />
     </div>
   );
 };

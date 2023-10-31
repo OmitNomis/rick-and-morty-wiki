@@ -68,7 +68,7 @@ const CoreDetailsComponent = ({
     <React.Fragment>
       {value !== "" && (
         <div className="flex mx-5 border-b-border/50 border-b-2 pb-2">
-          <div className="flex-1 justify-start">{label}</div>
+          <div className="flex-1 justify-start text-primary">{label}</div>
           <div className=" flex-1 text-end sm:text-start">
             {capitalizeFirstLetter(value)}
           </div>
