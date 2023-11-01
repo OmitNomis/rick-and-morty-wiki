@@ -14,10 +14,11 @@ export const initialFilters = {
 
 export const CharacterList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterOptions, setFilterOptions] = useState(initialFilters);
+  // implement with filter component
+  // const [filterOptions, setFilterOptions] = useState(initialFilters);
   const { characters, loading, error, totalItems } = useFetchCharacters(
     currentPage,
-    filterOptions
+    initialFilters
   );
 
   if (loading) {
