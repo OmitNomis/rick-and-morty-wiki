@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { CharacterStatus } from "@/screens/Characrers/Characters.types";
+import { CharacterStatus } from "@/types/Characters.types";
 
 interface CharacterStatusTagProps {
-  status: CharacterStatus;
-  species: string;
-  type: string;
+  status?: CharacterStatus;
+  species?: string;
+  type?: string;
 }
 
 export const CharacterStatusTag: FC<CharacterStatusTagProps> = ({

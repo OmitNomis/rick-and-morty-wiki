@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { CharacterResults } from "@/screens/Characrers/Characters.types";
+import { CharacterResults } from "@/types/Characters.types";
 import { GET_ALL_CHARACTERS } from "@/queries/characters";
 
 export const useFetchCharacters = (page: number, filter: {}) => {
