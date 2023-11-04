@@ -4,7 +4,7 @@ import { CharacterCard } from "../../components/CharacterCard";
 import { useFetchCharacters } from "@/hooks/useFetchCharacters";
 import { useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
-import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+
 export const initialFilters = {
   name: "",
   status: "",
@@ -13,7 +13,6 @@ export const initialFilters = {
 };
 
 export const Characters = () => {
-  useScrollRestoration("charactersListScroll");
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
