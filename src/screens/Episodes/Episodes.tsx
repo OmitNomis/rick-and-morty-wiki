@@ -37,14 +37,12 @@ export const Episodes = () => {
     return <>Err</>;
   }
 
-  console.log(episodes);
-
   return (
     <section className="flex flex-col gap-5">
       <div>
         <h1 className="text-3xl sm:text-4xl font-extrabold">Episodes</h1>
       </div>
-      <div>
+      <div className="flex flex-col gap-5">
         {episodes.map((episode: EpisodeResults) => {
           return <EpisodeCard key={episode.id} episode={episode} />;
         })}
