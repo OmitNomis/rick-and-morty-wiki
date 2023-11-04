@@ -29,9 +29,9 @@ export const CharacterEpisodes = ({ episodes }: CharacterEpisodeProps) => {
         {visibleEpisodes.map((episode) => (
           <Link
             to={`/episodes/${episode.id}`}
-            className="flex w-full p-5 rounded-xl border-2 border-transparent hover:border-primary/80 group/title justify-between items-center"
+            className="flex w-full px-5 py-5 rounded-xl border-2 border-transparent hover:border-primary/80 group/title justify-between items-center"
             key={episode.id}>
-            <div className="group/title group-hover/title:text-primary/80">
+            <div className="group/title group-hover/title:text-primary/80 flex-grow mr-5">
               {episode?.name}
             </div>
             <div>{episode?.episode}</div>
