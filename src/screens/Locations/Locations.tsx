@@ -32,7 +32,7 @@ export const Locations: FC = () => {
       <div>
         <h1 className="text-3xl sm:text-4xl font-extrabold">Locations</h1>
       </div>
-      <div className="mt-5 w-full">
+      <div className="w-full">
         {locations.map((location: LocationsResult) => {
           return <LocationCard key={location.id} location={location} />;
         })}
