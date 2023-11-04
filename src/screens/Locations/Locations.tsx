@@ -4,6 +4,7 @@ import { Loader } from "@/components/Loader";
 import { CustomPagination } from "@/components/ui/CustomPagination";
 import { LocationCard } from "@/components/LocationCard";
 import { LocationsResult } from "@/types/Location.types";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 const initialFilters = {
   name: "",
@@ -36,7 +37,7 @@ export const Locations: FC = () => {
   }
 
   if (error) {
-    return <>ERr</>;
+    return <ErrorInfo variant="data" />;
   }
 
   return (

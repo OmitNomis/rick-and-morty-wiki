@@ -4,6 +4,7 @@ import { CharacterCard } from "../../components/CharacterCard";
 import { useFetchCharacters } from "@/hooks/useFetchCharacters";
 import { useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 export const initialFilters = {
   name: "",
@@ -18,7 +19,7 @@ export const Characters = () => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
   // implement with filter component
   // const [filterOptions, setFilterOptions] = useState(initialFilters);
-  const { characters, loading, error, totalItems } = useFetchCharacters(
+  const { characters, error, loading, totalItems } = useFetchCharacters(
     currentPage,
     initialFilters
   );
@@ -36,7 +37,7 @@ export const Characters = () => {
     return <Loader />;
   }
   if (error) {
-    return <>Err</>;
+    return <ErrorInfo variant="data" />;
   }
 
   return (

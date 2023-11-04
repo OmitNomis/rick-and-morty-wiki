@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CharacterResults } from "@/types/Characters.types";
 import { CharacterStatusTag } from "./CharacterStatusTag";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface CharacterCardProps {
   character: CharacterResults;
@@ -10,11 +10,17 @@ interface CharacterCardProps {
 export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
   const { id, name, image, status, location, origin, species, type } =
     character;
+  const navigate = useNavigate();
+
+  const handleCharacterClicked = () => {
+    navigate(id);
+  };
 
   return (
     <article
-      className="flex flex-col sm:flex-row rounded-lg bg-secondary"
-      key={id}>
+      className="flex cursor-pointer flex-col group/title sm:flex-row rounded-lg bg-secondary"
+      key={id}
+      onClick={handleCharacterClicked}>
       <div className="w-full sm:w-[40%] max-h-[300px]">
         <img
           src={image}
@@ -24,11 +30,9 @@ export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
       </div>
       <div className="flex flex-col p-5 gap-5 w-full sm:w-[60%]">
         <div>
-          <Link to={id}>
-            <h3 className="text-xl font-bold sm:text-2xl hover:text-primary">
-              {name}
-            </h3>
-          </Link>
+          <h3 className="text-xl font-bold sm:text-2xl group-hover/title:text-primary">
+            {name}
+          </h3>
           <CharacterStatusTag status={status} species={species} type={type} />
         </div>
         {location && (
