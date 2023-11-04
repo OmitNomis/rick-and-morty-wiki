@@ -3,7 +3,7 @@ import { EpisodeFilters, EpisodeResults } from "@/types/Episodes.types";
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 
-export const useFetchEpisodes = (page: string, filter: EpisodeFilters) => {
+export const useFetchEpisodes = (page: number, filter: EpisodeFilters) => {
   const [episodes, setEpisodes] = useState<EpisodeResults[]>([]);
   const [totalItems, setTotalItems] = useState(0);
 
