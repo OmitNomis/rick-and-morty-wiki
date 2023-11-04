@@ -24,10 +24,11 @@ export const useFetchSingleEpisode = (id: string | undefined) => {
         const dataImdb: ImdbData = await res.json();
         let gqlResult = data.episode;
         let combinedData;
+        let imageUrl = dataImdb.Poster.replace("300", "2000");
         combinedData = {
           title: gqlResult.name,
           characters: gqlResult.characters,
-          image: dataImdb.Poster,
+          image: imageUrl,
           duration: dataImdb.Runtime,
           season: dataImdb.Season,
           episode: dataImdb.Episode,

@@ -45,7 +45,8 @@ export const EpisodeProfile: FC = () => {
       <div className="w-full flex flex-col justify-center items-center">
         <img
           src={image}
-          className="w-full sm:w-[80%] h-full object-cover rounded-xl"
+          className="w-full sm:w-[80%] object-cover rounded-xl bg-gray-300"
+          style={{ aspectRatio: "16/9" }}
           alt={`${title} image`}
         />
         <div className="w-full flex justify-between mt-5">
