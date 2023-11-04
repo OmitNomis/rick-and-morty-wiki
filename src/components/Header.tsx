@@ -32,7 +32,7 @@ export const Header = () => {
       as="header"
       className="flex justify-between items-center border-b-2">
       <div className="flex items-start flex-col">
-        <Link to="/characters">
+        <Link to="/">
           <img
             src="/logo.png"
             alt="logo"
