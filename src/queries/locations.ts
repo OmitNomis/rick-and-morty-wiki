@@ -22,3 +22,19 @@ export const GET_ALL_LOCATION = gql`
     }
   }
 `;
+
+export const GET_SINGLE_LOCATION = gql`
+  query GetSingleLocation($id: ID!) {
+    location(id: $id) {
+      id
+      name
+      type
+      dimension
+      residents {
+        id
+        image
+        name
+      }
+    }
+  }
+`;
