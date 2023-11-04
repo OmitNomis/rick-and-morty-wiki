@@ -12,3 +12,8 @@ export type EpisodeResults = {
   episode: string;
   characters: CharacterResults[];
 };
+
+export type EpisodeFilters = {
+  name: string;
+  episode: string;
+};
