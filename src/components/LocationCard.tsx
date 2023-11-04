@@ -23,7 +23,7 @@ export const LocationCard: FC<LocationCardProps> = ({
       <div className="flex flex-[1.5] flex-col gap-5 sm:mt-0 mt-5">
         {residents && (
           <div className="flex">
-            <Users2 />
+            <Users2 className="mr-2" />
             <span>Known Residents: {residents.length}</span>
           </div>
         )}
