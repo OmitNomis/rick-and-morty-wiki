@@ -2,7 +2,7 @@ import { CharacterResults } from "@/types/Characters.types";
 import { Loader } from "../../components/Loader";
 import { CharacterCard } from "../../components/CharacterCard";
 import { useFetchCharacters } from "@/hooks/useFetchCharacters";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
 
 export const initialFilters = {
@@ -13,7 +13,9 @@ export const initialFilters = {
 };
 
 export const Characters = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageFromUrl = Number(urlParams.get("page"));
+  const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
   // implement with filter component
   // const [filterOptions, setFilterOptions] = useState(initialFilters);
   const { characters, loading, error, totalItems } = useFetchCharacters(
@@ -21,6 +23,15 @@ export const Characters = () => {
     initialFilters
   );
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("page", currentPage.toString() || "");
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?${urlParams.toString()}`
+    );
+  }, [currentPage]);
   if (loading) {
     return <Loader />;
   }

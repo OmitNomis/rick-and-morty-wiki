@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useFetchLocations } from "@/hooks/useFetchLocations";
 import { Loader } from "@/components/Loader";
 import { CustomPagination } from "@/components/ui/CustomPagination";
@@ -11,13 +11,25 @@ const initialFilters = {
   dimension: "",
 };
 export const Locations: FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  // todo: add filters with form
-  // const [filters, setFilters] = useState({});
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageFromUrl = Number(urlParams.get("page"));
+  const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
+  // implement with filter component
+  // const [filterOptions, setFilterOptions] = useState(initialFilters);
   const { locations, error, loading, totalItems } = useFetchLocations(
     currentPage,
     initialFilters
   );
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("page", currentPage.toString() || "");
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?${urlParams.toString()}`
+    );
+  }, [currentPage]);
 
   if (loading) {
     return <Loader />;
