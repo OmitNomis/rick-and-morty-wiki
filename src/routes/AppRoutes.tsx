@@ -4,6 +4,7 @@ import { Characters, Locations, Episodes } from "@/screens";
 import { CharacterProfile } from "@/screens/CharacterProfile/CharacterProfile";
 import { LocationProfile } from "@/screens/LocationProfile/LocationProfile";
 import { EpisodeProfile } from "@/screens/EpisodeProfile/EpisodeProfile";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 export const AppRoutes = () => {
   return (
@@ -17,7 +18,7 @@ export const AppRoutes = () => {
           <Route path="/locations/:id" element={<LocationProfile />} />
           <Route path="/episodes" element={<Episodes />} />
           <Route path="/episodes/:id" element={<EpisodeProfile />} />
-          <Route path="*" element={<div>Not Found</div>} />
+          <Route path="*" element={<ErrorInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>

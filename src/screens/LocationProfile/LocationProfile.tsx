@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useFetchSingleLocation } from "@/hooks/useFetchSingleLocation";
 import { Loader } from "@/components/Loader";
 import { LocationResidentsList } from "@/components/LocationResidentsList";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 export const LocationProfile: FC = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ export const LocationProfile: FC = () => {
     return <Loader />;
   }
   if (error) {
-    return <>Err</>;
+    return <ErrorInfo variant="data" />;
   }
 
   const {

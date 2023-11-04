@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Loader } from "@/components/Loader";
 import { CharacterDetails } from "@/components/CharacterDetails";
 import { CharacterEpisodes } from "@/components/CharacterEpisodes";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 export type CharacterDetailsMapItem = {
   label: string;
@@ -18,7 +19,7 @@ export const CharacterProfile: FC = () => {
     return <Loader />;
   }
   if (error) {
-    return <>ERr</>;
+    return <ErrorInfo variant="data" />;
   }
   const {
     character: {

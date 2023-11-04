@@ -4,6 +4,7 @@ import { Loader } from "@/components/Loader";
 import { EpisodeFilters, EpisodeResults } from "@/types/Episodes.types";
 import { CustomPagination } from "@/components/ui/CustomPagination";
 import { EpisodeCard } from "@/components/EpisodeCard";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 const initialFilters: EpisodeFilters = {
   name: "",
@@ -34,7 +35,7 @@ export const Episodes = () => {
     return <Loader />;
   }
   if (error) {
-    return <>Err</>;
+    return <ErrorInfo variant="data" />;
   }
 
   return (

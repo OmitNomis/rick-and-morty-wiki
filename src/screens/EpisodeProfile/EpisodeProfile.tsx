@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { Clock } from "lucide-react";
 import { ImbdLogo } from "@/assets/images";
 import { LocationResidentsList } from "@/components/LocationResidentsList";
+import { ErrorInfo } from "@/components/ErrorInfo";
 
 export const EpisodeProfile: FC = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ export const EpisodeProfile: FC = () => {
   }
 
   if (error) {
-    return <>Err</>;
+    return <ErrorInfo variant="data" />;
   }
   const {
     title,
