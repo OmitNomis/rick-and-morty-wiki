@@ -4,6 +4,7 @@ import { Loader } from "@/components/Loader";
 import { CustomPagination } from "@/components/ui/CustomPagination";
 import { LocationCard } from "@/components/LocationCard";
 import { LocationsResult } from "@/types/Location.types";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 
 const initialFilters = {
   name: "",
@@ -11,6 +12,7 @@ const initialFilters = {
   dimension: "",
 };
 export const Locations: FC = () => {
+  useScrollRestoration("locationsListScroll");
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
