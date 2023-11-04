@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 
 interface LocationResidentsListProps {
   residents: CharacterResults[];
+  title?: string;
 }
 
 export const LocationResidentsList: FC<LocationResidentsListProps> = ({
   residents,
+  title,
 }) => {
   const [showAll, setShowAll] = useState(false);
 
@@ -23,7 +25,7 @@ export const LocationResidentsList: FC<LocationResidentsListProps> = ({
   return (
     <div className="flex flex-col">
       <h3 className="text-lg sm:text-xl mt-10 text-primary/80">
-        Known Residents:
+        {title ? title : "Known Residents"}
       </h3>
       <div className="mt-5">
         {visibleResidents.map((resident: CharacterResults) => {

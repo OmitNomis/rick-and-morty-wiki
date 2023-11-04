@@ -17,3 +17,27 @@ export type EpisodeFilters = {
   name: string;
   episode: string;
 };
+
+export type SingleEpisodeData = {
+  title: string;
+  characters: CharacterResults[];
+  image: string;
+  duration: string;
+  season: string;
+  episode: string;
+  imdbRating: string;
+  imdbId: string;
+  rated: string;
+  plot: string;
+};
+
+export type ImdbData = {
+  Poster: string;
+  Runtime: string;
+  Season: string;
+  Episode: string;
+  imdbRating: string;
+  imdbID: string;
+  Rated: string;
+  Plot: string;
+};
