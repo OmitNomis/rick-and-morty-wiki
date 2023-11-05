@@ -2,7 +2,7 @@ import { CharacterResults } from "@/types/Characters.types";
 import { Loader } from "../../components/Loader";
 import { CharacterCard } from "../../components/CharacterCard";
 import { useFetchCharacters } from "@/hooks/useFetchCharacters";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
 import { ErrorInfo } from "@/components/ErrorInfo";
 
@@ -13,7 +13,7 @@ export const initialFilters = {
   gender: "",
 };
 
-export const Characters = () => {
+export const Characters: FC = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
