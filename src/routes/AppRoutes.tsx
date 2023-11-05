@@ -15,7 +15,7 @@ export const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Navigate to={"/characters"} />} />
+          <Route path="/" element={<Navigate replace to={"/characters"} />} />
           <Route path="/characters" element={<Characters />} />
           <Route path="/characters/:id" element={<CharacterProfile />} />
           <Route path="/locations" element={<Locations />} />
