@@ -1,9 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./Layout";
-import { Characters, Locations, Episodes } from "@/screens";
-import { CharacterProfile } from "@/screens/CharacterProfile/CharacterProfile";
-import { LocationProfile } from "@/screens/LocationProfile/LocationProfile";
-import { EpisodeProfile } from "@/screens/EpisodeProfile/EpisodeProfile";
+import {
+  Characters,
+  Locations,
+  Episodes,
+  CharacterProfile,
+  EpisodeProfile,
+  LocationProfile,
+} from "@/screens";
 import { ErrorInfo } from "@/components/ErrorInfo";
 
 export const AppRoutes = () => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { useFetchEpisodes } from "@/hooks/useFetchEpisodes";
 import { Loader } from "@/components/Loader";
 import { EpisodeFilters, EpisodeResults } from "@/types/Episodes.types";
@@ -11,7 +11,7 @@ const initialFilters: EpisodeFilters = {
   episode: "",
 };
 
-export const Episodes = () => {
+export const Episodes: FC = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
