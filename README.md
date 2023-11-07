@@ -4,6 +4,7 @@
 - A web application built with Vite + React + Typescript
 - Uses `rickandmortyapi` to fetch character, location and episode data. 
 - Also uses `omdbapi` to fetch some data from imdb.
+- Live Preview: [Demo](https://ricks-realm.netlify.app)
 
 ## Getting Started
 
