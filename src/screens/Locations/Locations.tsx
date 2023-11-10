@@ -5,6 +5,7 @@ import { CustomPagination } from "@/components/ui/CustomPagination";
 import { LocationCard } from "@/components/LocationCard";
 import { LocationsResult } from "@/types/Location.types";
 import { ErrorInfo } from "@/components/ErrorInfo";
+import { useTitle } from "@/hooks/useTitle";
 
 const initialFilters = {
   name: "",
@@ -32,6 +33,7 @@ export const Locations: FC = () => {
     );
   }, [currentPage]);
 
+  useTitle("Locations | Rick and Morty");
   if (loading) {
     return <Loader />;
   }
@@ -43,7 +45,7 @@ export const Locations: FC = () => {
   return (
     <section className="flex flex-col gap-5">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold">Locations</h1>
+        <h1 className="text-3xl font-extrabold sm:text-4xl">Locations</h1>
       </div>
       <div className="w-full">
         {locations.map((location: LocationsResult) => {

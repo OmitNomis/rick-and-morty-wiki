@@ -5,6 +5,7 @@ import { EpisodeFilters, EpisodeResults } from "@/types/Episodes.types";
 import { CustomPagination } from "@/components/ui/CustomPagination";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { ErrorInfo } from "@/components/ErrorInfo";
+import { useTitle } from "@/hooks/useTitle";
 
 const initialFilters: EpisodeFilters = {
   name: "",
@@ -31,6 +32,7 @@ export const Episodes: FC = () => {
       `${window.location.pathname}?${urlParams.toString()}`
     );
   }, [currentPage]);
+  useTitle("Episodes | Rick and Morty");
   if (loading) {
     return <Loader />;
   }
@@ -41,7 +43,7 @@ export const Episodes: FC = () => {
   return (
     <section className="flex flex-col gap-5">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold">Episodes</h1>
+        <h1 className="text-3xl font-extrabold sm:text-4xl">Episodes</h1>
       </div>
       <div className="flex flex-col gap-5">
         {episodes.map((episode: EpisodeResults) => {
