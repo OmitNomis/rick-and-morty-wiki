@@ -5,7 +5,6 @@ import { CustomPagination } from "@/components/ui/CustomPagination";
 import { LocationCard } from "@/components/LocationCard";
 import { LocationsResult } from "@/types/Location.types";
 import { ErrorInfo } from "@/components/ErrorInfo";
-import { useTitle } from "@/hooks/useTitle";
 
 const initialFilters = {
   name: "",
@@ -13,6 +12,7 @@ const initialFilters = {
   dimension: "",
 };
 export const Locations: FC = () => {
+  document.title = "Locations | Rick and Morty";
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
@@ -33,7 +33,6 @@ export const Locations: FC = () => {
     );
   }, [currentPage]);
 
-  useTitle("Locations | Rick and Morty");
   if (loading) {
     return <Loader />;
   }

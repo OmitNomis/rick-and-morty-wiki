@@ -5,7 +5,6 @@ import { EpisodeFilters, EpisodeResults } from "@/types/Episodes.types";
 import { CustomPagination } from "@/components/ui/CustomPagination";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { ErrorInfo } from "@/components/ErrorInfo";
-import { useTitle } from "@/hooks/useTitle";
 
 const initialFilters: EpisodeFilters = {
   name: "",
@@ -13,6 +12,7 @@ const initialFilters: EpisodeFilters = {
 };
 
 export const Episodes: FC = () => {
+  document.title = "Episodes | Rick and Morty";
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
@@ -32,7 +32,6 @@ export const Episodes: FC = () => {
       `${window.location.pathname}?${urlParams.toString()}`
     );
   }, [currentPage]);
-  useTitle("Episodes | Rick and Morty");
   if (loading) {
     return <Loader />;
   }
