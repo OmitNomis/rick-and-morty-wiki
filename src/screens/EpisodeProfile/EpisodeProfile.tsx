@@ -31,26 +31,28 @@ export const EpisodeProfile: FC = () => {
     season,
     plot,
   } = episodeData ?? {};
+  // new title
+  document.title = `${title} | Rick and Morty`;
 
   return (
     <section className="flex flex-col gap-5">
       <div className="flex flex-col gap-1">
-        <h2 className="text-3xl sm:text-4xl font-extrabold">{title}</h2>
-        <div className="text-primary/80 text-lg">
+        <h2 className="text-3xl font-extrabold sm:text-4xl">{title}</h2>
+        <div className="text-lg text-primary/80">
           Season: {season} | Episode: {episode}
         </div>
         <div className="flex gap-2 text-gray-500">
           <Clock /> <p>{duration}</p>
         </div>
       </div>
-      <div className="w-full flex flex-col justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-full">
         <img
           src={image}
           className="w-full sm:w-[80%] object-cover rounded-xl bg-gray-300"
           style={{ aspectRatio: "16/9" }}
           alt={`${title} image`}
         />
-        <div className="w-full flex justify-between mt-5">
+        <div className="flex justify-between w-full mt-5">
           <Link to={`https://imdb.com/title/${imdbId}`} target="_blank">
             <div className="flex gap-2">
               <img src={ImbdLogo} alt="imdb logo" className="h-5 " />
@@ -61,7 +63,7 @@ export const EpisodeProfile: FC = () => {
         </div>
       </div>
       <div>
-        <h3 className="text-xl sm:text-3xl text-primary/80 mb-2">Plot:</h3>
+        <h3 className="mb-2 text-xl sm:text-3xl text-primary/80">Plot:</h3>
         <p>{plot}</p>
       </div>
 

@@ -35,6 +35,8 @@ export const CharacterProfile: FC = () => {
     },
   } = data ?? {};
 
+  document.title = `${name} | Rick and Morty`;
+
   const CharacterDetailsMap: CharacterDetailsMapItem[] = [
     {
       label: "NAME:",
