@@ -5,6 +5,7 @@ import { useFetchCharacters } from "@/hooks/useFetchCharacters";
 import { FC, useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
 import { ErrorInfo } from "@/components/ErrorInfo";
+import { useTitle } from "@/hooks/useTitle";
 
 export const initialFilters = {
   name: "",
@@ -33,6 +34,7 @@ export const Characters: FC = () => {
       `${window.location.pathname}?${urlParams.toString()}`
     );
   }, [currentPage]);
+  useTitle("Characters | Rick and Morty");
   if (loading) {
     return <Loader />;
   }
@@ -43,9 +45,9 @@ export const Characters: FC = () => {
   return (
     <section className="flex flex-col gap-5">
       <div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold">Characters</h1>
+        <h1 className="text-3xl font-extrabold sm:text-4xl">Characters</h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {characters.map((character: CharacterResults) => {
           return <CharacterCard key={character.id} character={character} />;
         })}
