@@ -5,7 +5,6 @@ import { useFetchCharacters } from "@/hooks/useFetchCharacters";
 import { FC, useEffect, useState } from "react";
 import { CustomPagination } from "../../components/ui/CustomPagination";
 import { ErrorInfo } from "@/components/ErrorInfo";
-import { useTitle } from "@/hooks/useTitle";
 
 export const initialFilters = {
   name: "",
@@ -15,6 +14,7 @@ export const initialFilters = {
 };
 
 export const Characters: FC = () => {
+  document.title = "Characters | Rick and Morty";
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromUrl = Number(urlParams.get("page"));
   const [currentPage, setCurrentPage] = useState(pageFromUrl || 1);
@@ -34,7 +34,6 @@ export const Characters: FC = () => {
       `${window.location.pathname}?${urlParams.toString()}`
     );
   }, [currentPage]);
-  useTitle("Characters | Rick and Morty");
   if (loading) {
     return <Loader />;
   }

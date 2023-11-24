@@ -21,11 +21,13 @@ export const LocationProfile: FC = () => {
     location: { name, dimension, type, residents },
   } = data;
 
+  document.title = `${name} | Rick and Morty`;
+
   return (
     <section>
       <div className="flex flex-col gap-3">
-        <h2 className="text-3xl sm:text-4xl font-extrabold">{name}</h2>
-        <div className="flex flex-col sm:flex-row w-full justify-between text-gray-500">
+        <h2 className="text-3xl font-extrabold sm:text-4xl">{name}</h2>
+        <div className="flex flex-col justify-between w-full text-gray-500 sm:flex-row">
           <p>{dimension}</p>
           <p>{type}</p>
         </div>
